@@ -119,7 +119,7 @@ function gameOver() {
 */
 function showUp() {
   let delay = setDelay(difficulty); // TODO: Update so that it uses setDelay()
-  const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
+  const hole = chooseHole(hole);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
 
@@ -133,12 +133,12 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
-  
+  toggleVissibility(hole);
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    
+    toggleVisibility(hole)
     gameOver();
-  }, 0); // TODO: change the setTimeout delay to the one provided as a parameter
+  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
@@ -150,7 +150,7 @@ function showAndHide(hole, delay){
 */
 function toggleVisibility(hole){
   // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
-  
+  hole.classList.toggle('show');
   return hole;
 }
 
@@ -166,7 +166,7 @@ function toggleVisibility(hole){
 */
 function updateScore() {
   // Increment the points global variable by 1 point
-  points += 1;
+  points ++;
   // Update score.textContent with points.
   score.textContent = points;
   // Return points;
@@ -222,7 +222,7 @@ function startTimer() {
 */
 function whack(event) {
   // TODO: Write your code here.
-  // call updateScore()
+  updateScore();
   return points;
 }
 
@@ -232,8 +232,11 @@ function whack(event) {
 * for an example on how to set event listeners using a for loop.
 */
 function setEventListeners(){
-  // TODO: Write your code here
-
+  moles.forEach(
+    mole => {
+      mole.addEventListener("click", whack)
+    }
+  )
   return moles;
 }
 
@@ -267,8 +270,8 @@ function stopGame(){
 *
 */
 function startGame(){
-  //setDuration(10);
-  //showUp();
+  setDuration(10);
+  showUp();
   return "game started";
 }
 
