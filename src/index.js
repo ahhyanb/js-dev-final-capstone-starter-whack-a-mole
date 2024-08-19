@@ -119,7 +119,7 @@ function gameOver() {
 */
 function showUp() {
   let delay = setDelay(difficulty); // TODO: Update so that it uses setDelay()
-  const hole = chooseHole(hole);  // TODO: Update so that it use chooseHole()
+  const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
 
@@ -133,7 +133,7 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
-  toggleVissibility(hole);
+  toggleVisibility(hole);
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
     toggleVisibility(hole)
@@ -271,6 +271,9 @@ function stopGame(){
 */
 function startGame(){
   setDuration(10);
+  clearScore();
+  setEventListeners();
+  startTimer();
   showUp();
   return "game started";
 }
