@@ -1,6 +1,6 @@
 html {
   /*background: url('./assets/background.png') no-repeat center center fixed;*/
-  background: url('./assets/kitchen-background.png') no-repeat center center fixed;
+  background: url('../assets/kitchen-floor-background.png') no-repeat center center fixed;
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
