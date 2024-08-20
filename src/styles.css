@@ -40,6 +40,11 @@ h3 {
 #start {
     text-align: center;
     font-size: 30px;
+    border-radius: 5px; 
+    
+}
+#start:hover {
+  background-color: #00a884; /* Darker shade on hover */
 }
 
 #timer{
