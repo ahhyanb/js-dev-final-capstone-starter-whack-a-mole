@@ -3,8 +3,17 @@
     <link rel="stylesheet" href="./src/styles.css">
   </head>
   <body>
-    <h1 id="title"> Smash-A-Roach </h1>
+    <h1 id="title"> Smash-A-Roach! </h1>
     <div>
+      <div>
+        <h3>Select Difficulty:
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+            </select>
+        </h3>
+    </div>
       <div>
         <h2>Click <button id="start">start</button> to play!</h2>
       </div>
@@ -44,6 +53,13 @@
         <div id="mole8" class="mole"></div>
       </div> <!--TODO: Add the missing holes and moles. -->
     </div>
+
+      <!-- Background Music -->
+      <audio id="background-music">
+        <source src="../assets/molesong.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+  
     <script src="./src/index.js"></script>
   </body>
 </html>

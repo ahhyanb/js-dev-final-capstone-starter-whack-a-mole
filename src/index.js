@@ -1,6 +1,7 @@
 const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
+const difficultySelector = document.querySelector('#difficulty'); // Get the difficulty dropdown
 // TODO: Add the missing query selectors:
 const score = document.querySelector('#score'); // Use querySelector() to get the score element
 const timerDisplay = document.querySelector('#timer'); // use querySelector() to get the timer element.
@@ -10,6 +11,10 @@ let timer;
 let lastHole = 0;
 let points = 0;
 let difficulty = "normal";
+
+
+const audioHit = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
+const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
 
 /**
  * Generates a random integer within a range.
@@ -197,6 +202,8 @@ function updateTimer() {
   if (time > 0){
     time -= 1;
     timerDisplay.textContent = time;
+  } else {
+    stopAudio(song); //stops audio after the timer
   }
   return time;
 }
@@ -223,6 +230,8 @@ function startTimer() {
 function whack(event) {
   // TODO: Write your code here.
   updateScore();
+  audioHit.currentTime = 0;
+  playAudio(audioHit); // Play the whack sound when a roach is clicked
   return points;
 }
 
@@ -260,6 +269,7 @@ function setDuration(duration) {
 function stopGame(){
   // stopAudio(song);  //optional
   clearInterval(timer);
+  stopAudio(song); // Ensure music stops when the game is stopped
   return "game stopped";
 }
 
@@ -270,15 +280,32 @@ function stopGame(){
 *
 */
 function startGame(){
-  setDuration(10);
+  difficulty = difficultySelector.value;
+  setDuration(20);
   clearScore();
   setEventListeners();
   startTimer();
   showUp();
+  playAudio(song); // Start the music when the game starts
   return "game started";
 }
 
 startButton.addEventListener("click", startGame);
+
+function playAudio(audioObject) {
+  audioObject.play();
+}
+
+
+function stopAudio(audioObject) {
+  audioObject.pause();
+  audioObject.currentTime = 0; // Reset the audio to the beginning
+}
+
+
+function play(){
+  playAudio(song);
+}
 
 
 // Please do not modify the code below.
