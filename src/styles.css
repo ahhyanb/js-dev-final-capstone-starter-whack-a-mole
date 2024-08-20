@@ -50,7 +50,7 @@ h3 {
 
 .grid {
   width: 800px;
-  height: 600px;
+  height: 450px;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
